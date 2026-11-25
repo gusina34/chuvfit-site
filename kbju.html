@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Калькулятор КБЖУ и меню</title>
+<meta name="description" content="Рассчитайте норму калорий, белков, жиров и углеводов и соберите меню на день.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html">chuv<b>.</b>fit</a>
+  <button class="burger" aria-label="Меню" aria-expanded="false">☰</button>
+  <nav class="nav">
+    <a href="index.html">Главная</a>
+    <a href="index.html#formats">Форматы</a>
+    <a href="kbju.html" aria-current="page">Калькулятор КБЖУ</a>
+    <a href="anketa.html">Анкета</a>
+    <a class="btn" data-link="tg" target="_blank" rel="noopener">Записаться</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="band"><div class="wrap grid2">
+  <div>
+    <h1>Ваша норма КБЖУ</h1>
+    <p class="lead" style="margin-top:12px">Введите данные: норма и меню пересчитаются сразу.</p>
+    <div class="row3">
+      <div><label for="age">Возраст</label><input id="age" type="number" inputmode="numeric" value="45"></div>
+      <div><label for="h">Рост, см</label><input id="h" type="number" inputmode="numeric" value="165"></div>
+      <div><label for="w">Вес, кг</label><input id="w" type="number" inputmode="decimal" step="0.1" value="72"></div>
+    </div>
+    <label for="sex">Пол</label>
+    <select id="sex"><option value="f">Женский</option><option value="m">Мужской</option></select>
+    <label for="act">Активность</label>
+    <select id="act">
+      <option value="1.2">Сидячая работа, без тренировок</option>
+      <option value="1.375" selected>1–3 тренировки в неделю</option>
+      <option value="1.55">3–5 тренировок в неделю</option>
+      <option value="1.725">6–7 тренировок или физическая работа</option>
+    </select>
+    <label for="goal">Цель</label>
+    <select id="goal"><option value="loss">Снизить вес (мягкий дефицит −15%)</option><option value="keep">Держать вес, подтянуть тело</option><option value="gain">Набрать мышцы (+10%)</option></select>
+    <label class="ck" style="margin-top:16px"><input id="preg" type="checkbox"> Беременность или кормление грудью</label>
+    <div id="nwarn"></div>
+  </div>
+  <div class="plate">
+    <svg viewBox="0 0 220 220" role="img" aria-label="Норма калорий и БЖУ">
+      <circle cx="110" cy="110" r="100" fill="var(--card)"/>
+      <g id="ring" transform="rotate(-90 110 110)"></g>
+      <text x="110" y="110" text-anchor="middle" font-family="Unbounded,sans-serif" font-weight="600" font-size="34" fill="var(--ink)" id="kc">0</text>
+      <text x="110" y="134" text-anchor="middle" font-size="13" fill="var(--mut)">ккал в день</text>
+    </svg>
+    <div class="legend">
+      <div><b id="pg" style="color:var(--p)">0</b><span>белки, г</span></div>
+      <div><b id="fg" style="color:var(--f)">0</b><span>жиры, г</span></div>
+      <div><b id="cg" style="color:var(--c)">0</b><span>углеводы, г</span></div>
+    </div>
+    <p class="note" id="bmr" style="margin-top:10px"></p>
+    <a class="btn" href="#menu">Меню на день ↓</a>
+  </div>
+</div></section>
+
+<section class="band peach" id="menu"><div class="wrap">
+  <h2>Меню на день</h2>
+  <p class="lead">Готовое меню под вашу норму. Меняйте блюда и граммы, добавляйте свои продукты — или соберите день с нуля.</p>
+  <div class="btns" style="margin:16px 0 22px">
+    <button class="btn" id="regen">Подобрать другое меню</button>
+    <button class="btn ghost" id="clear" style="background:var(--card)">Собрать самой с нуля</button>
+  </div>
+  <div class="menu-layout">
+    <div id="meals"></div>
+    <div class="tot">
+      <h3>Итого за день</h3>
+      <div id="bars"></div>
+      <p class="note">КБЖУ ориентировочные, по справочным данным. Крупы, мясо и рыба — в готовом виде.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="band" id="send"><div class="wrap form">
+  <h2>Отправить меню тренеру</h2>
+  <p class="lead">Нина посмотрит ваше меню и подскажет, что поправить.</p>
+  <form id="sendf" novalidate>
+    <label for="nm">Имя</label><input id="nm" autocomplete="name">
+    <label for="ct">Telegram или телефон</label><input id="ct" placeholder="@username или +7…">
+    <input class="hp" tabindex="-1" autocomplete="off" id="hp" aria-hidden="true">
+    <div class="btns"><button class="btn" type="submit">Отправить тренеру</button></div>
+  </form>
+  <div id="sres" aria-live="polite"></div>
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <span>© chuv.fit</span>
+  <a data-link="tg" target="_blank" rel="noopener">Telegram <span data-text="tg"></span></a>
+  <a data-link="ig" target="_blank" rel="noopener">Instagram <span data-text="ig"></span></a>
+  <a href="anketa.html">Анкета</a>
+</div></footer>
+<script src="assets/config.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/food.js"></script>
+<script src="assets/kbju.js"></script>
+</body>
+</html>

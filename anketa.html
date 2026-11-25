@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Анкета перед стартом</title>
+<meta name="description" content="Анкета перед тренировками: здоровье, питание и цели. 7–10 минут.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html">chuv<b>.</b>fit</a>
+  <button class="burger" aria-label="Меню" aria-expanded="false">☰</button>
+  <nav class="nav">
+    <a href="index.html">Главная</a>
+    <a href="index.html#formats">Форматы</a>
+    <a href="kbju.html">Калькулятор КБЖУ</a>
+    <a href="anketa.html" aria-current="page">Анкета</a>
+    <a class="btn" data-link="tg" target="_blank" rel="noopener">Записаться</a>
+  </nav>
+</div></header>
+
+<main class="band"><div class="wrap">
+  <h1>Анкета перед стартом</h1>
+  <p class="lead" style="margin:14px 0 26px">По ней я подберу безопасные тренировки и питание. Займёт 7–10 минут. Ответы видит только тренер.</p>
+  <form id="af" class="form" novalidate>
+    <div class="qcard">
+      <h3>О вас</h3>
+      <label for="name">Имя *</label><input id="name" name="name" autocomplete="name">
+      <label for="contact">Telegram или телефон *</label><input id="contact" name="contact" placeholder="@username или +7…">
+      <div class="row3">
+        <div><label for="age">Возраст</label><input id="age" name="age" type="number" inputmode="numeric"></div>
+        <div><label for="height">Рост, см</label><input id="height" name="height" type="number" inputmode="numeric"></div>
+        <div><label for="weight">Вес, кг</label><input id="weight" name="weight" type="number" inputmode="decimal" step="0.1"></div>
+      </div>
+      <label for="place">Где будете тренироваться?</label>
+      <select id="place" name="place"><option value="">—</option><option>Дома</option><option>В зале</option><option>И дома, и в зале</option></select>
+      <div id="txt1"></div>
+    </div>
+    <div class="qcard"><h3>Здоровье: сердце и общее состояние *</h3><div id="qa"></div></div>
+    <div class="qcard"><h3>Суставы, спина, женское здоровье *</h3><div id="qb"></div>
+      <label for="details">Если где-то ответили «да» — коротко поясните</label><textarea id="details" name="details"></textarea></div>
+    <div class="qcard"><h3>Питание</h3><div id="txt2"></div></div>
+    <div class="qcard"><h3>Цели и мотивация</h3><div id="txt3"></div>
+      <label for="stage">Какая фраза про вас сейчас?</label>
+      <select id="stage" name="stage"><option value="">—</option><option>Думаю начать, но пока не уверена</option><option>Собираюсь начать в ближайший месяц</option><option>Уже занимаюсь, но меньше полугода</option><option>Занимаюсь регулярно больше полугода</option></select>
+    </div>
+    <div class="qcard"><h3>Образ жизни</h3><div id="txt4"></div></div>
+    <div class="qcard"><h3>Согласие *</h3>
+      <label class="ck"><input type="checkbox" name="ok1"> Я ответила честно и сообщу тренеру, если самочувствие изменится</label>
+      <label class="ck"><input type="checkbox" name="ok2"> Понимаю, что тренер не врач и не ставит диагнозы. Если в разделе «Здоровье» есть «да», тренер может попросить разрешение врача на занятия</label>
+      <label class="ck"><input type="checkbox" name="ok3"> Остановлю тренировку при боли в груди, сильном головокружении, одышке или острой боли в суставах</label>
+    </div>
+    <input class="hp" tabindex="-1" autocomplete="off" name="website" aria-hidden="true">
+    <div id="err" aria-live="polite"></div>
+    <button class="btn" type="submit">Отправить анкету</button>
+  </form>
+  <div id="done" class="form" hidden aria-live="polite"></div>
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <span>© chuv.fit</span>
+  <a data-link="tg" target="_blank" rel="noopener">Telegram <span data-text="tg"></span></a>
+  <a data-link="ig" target="_blank" rel="noopener">Instagram <span data-text="ig"></span></a>
+  <a href="kbju.html">Калькулятор КБЖУ</a>
+</div></footer>
+<script src="assets/config.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/anketa.js"></script>
+</body>
+</html>
